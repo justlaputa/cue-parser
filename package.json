@@ -1,0 +1,22 @@
+{
+  "name": "cue-parser",
+  "preferGlobal": false,
+  "version": "0.0.1",
+  "author": "Xiao Han <justlaputa@gmail.com>",
+  "description": "A simple js library to parse cue sheet",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/test.js"
+  },
+  "dependencise": {},
+  "devDependencies": {
+    "mocha": "~1.10.0",
+    "expect.js": "~0.2.0"
+  },
+  "engines": {
+    "node": ">=0.8",
+    "npm": ">=1.2"
+  },
+  "dependencies": {
+    "line-reader": "~0.2.3"
+  }
+}
