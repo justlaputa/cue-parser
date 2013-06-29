@@ -17,6 +17,5 @@
     "npm": ">=1.2"
   },
   "dependencies": {
-    "line-reader": "~0.2.3"
   }
 }
