@@ -93,24 +93,24 @@ describe('cue-parser', function() {
         it('should parse track INDEX', function () {
             expect(track1.indexes).to.have.length(2);
             expect(track1.indexes[0].number).to.be(0);
-            expect(track1.indexes[0].time).to.be('00:00:00');
+            expect(track1.indexes[0].time).to.eql({min: 0, sec: 0, frame: 0});
             expect(track1.indexes[1].number).to.be(1);
-            expect(track1.indexes[1].time).to.be('00:00:33');
+            expect(track1.indexes[1].time).to.eql({min: 0, sec: 0, frame: 33});
 
             expect(track2.indexes).to.have.length(2);
             expect(track2.indexes[0].number).to.be(0);
-            expect(track2.indexes[0].time).to.be('00:05:10');
+            expect(track2.indexes[0].time).to.eql({min: 0, sec: 5, frame: 10});
             expect(track2.indexes[1].number).to.be(1);
-            expect(track2.indexes[1].time).to.be('00:05:23');
+            expect(track2.indexes[1].time).to.eql({min: 0, sec: 5, frame: 23});
         });
 
         it('should parse track PREGAP', function() {
-            expect(track1.pregap).to.be('00:02:00');
+            expect(track1.pregap).to.eql({min: 0, sec: 2, frame: 0});
             expect(track2.pregap).to.be(null);
         });
 
         it('should parse track POSTGAP', function() {
-            expect(track1.postgap).to.be('00:02:00');
+            expect(track1.postgap).to.eql({min: 0, sec: 2, frame: 0});
             expect(track2.postgap).to.be(null);
         });
     })
