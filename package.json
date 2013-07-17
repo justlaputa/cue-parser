@@ -7,6 +7,10 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:justlaputa/cue-parser.git"
+  },
   "dependencise": {},
   "devDependencies": {
     "mocha": "~1.10.0",
@@ -16,6 +20,5 @@
     "node": ">=0.8",
     "npm": ">=1.2"
   },
-  "dependencies": {
-  }
+  "license": "MIT"
 }
