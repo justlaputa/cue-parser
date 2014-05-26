@@ -4,6 +4,7 @@ PERFORMER "Sample performer"
 SONGWRITER "Sample songwriter"
 TITLE "Sample title"
 REM Comment in toplevel
+
 FILE "sample file.ape" WAVE
   TRACK 01 AUDIO
     FLAGS DCP PRE
@@ -15,6 +16,7 @@ FILE "sample file.ape" WAVE
     INDEX 00 00:00:00
     INDEX 01 00:00:33
     POSTGAP 00:02:00
+
   TRACK 02 AUDIO
     TITLE "Sample track 2"
     PERFORMER "Sample performer"
