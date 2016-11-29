@@ -61,13 +61,16 @@ describe('cue-parser', function() {
             var tracks = sheet.files[0].tracks;
 
             expect(tracks).to.be.an('array');
-            expect(tracks).to.have.length(2);
+            expect(tracks).to.have.length(3);
 
             expect(tracks[0].number).to.be(1);
             expect(tracks[0].type).to.be('AUDIO');
 
             expect(tracks[1].number).to.be(2);
             expect(tracks[1].type).to.be('AUDIO');
+
+            expect(tracks[2].number).to.be(3);
+            expect(tracks[2].type).to.be('AUDIO');
         });
 
         it('should parse all REMs', function() {
@@ -84,6 +87,7 @@ describe('cue-parser', function() {
 
                 track1 = tracks[0],
                 track2 = tracks[1];
+                track3 = tracks[2];
             });
 
             it('should parse FLAGS', function() {
@@ -100,6 +104,7 @@ describe('cue-parser', function() {
             it('should parse track TITLE', function () {
                 expect(track1.title).to.be('Sample track 1');
                 expect(track2.title).to.be('Sample track 2');
+                expect(track3.title).to.be('Sample track 3');
             });
 
             it('should parse track PERFORMER', function() {
@@ -124,6 +129,12 @@ describe('cue-parser', function() {
                 expect(track2.indexes[0].time).to.eql({min: 0, sec: 5, frame: 10});
                 expect(track2.indexes[1].number).to.be(1);
                 expect(track2.indexes[1].time).to.eql({min: 0, sec: 5, frame: 23});
+
+                expect(track3.indexes).to.have.length(2);
+                expect(track3.indexes[0].number).to.be(0);
+                expect(track3.indexes[0].time).to.eql({min: 9999, sec: 5, frame: 10});
+                expect(track3.indexes[1].number).to.be(1);
+                expect(track3.indexes[1].time).to.eql({min: 9999, sec: 5, frame: 23});
             });
 
             it('should parse track PREGAP', function() {

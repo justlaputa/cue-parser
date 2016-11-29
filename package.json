@@ -1,7 +1,7 @@
 {
   "name": "cue-parser",
   "preferGlobal": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Xiao Han <justlaputa@gmail.com>",
   "description": "A simple js library to parse cue sheet",
   "scripts": {

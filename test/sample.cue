@@ -24,3 +24,11 @@ FILE "sample file.ape" WAVE
     INDEX 00 00:05:10
     INDEX 01 00:05:23
     REM Comment in track
+
+  TRACK 03 AUDIO
+    TITLE "Sample track 3"
+    PERFORMER "Sample performer"
+    SONGWRITER "Sample songwriter"
+    INDEX 00 9999:05:10
+    INDEX 01 9999:05:23
+    REM Comment in track
