@@ -11,9 +11,9 @@ Add dependency in your `package.json` file:
 
 ```json
 {
-	"dependencies": {
-		"cue-parser": "0.0.2"
-	}
+    "dependencies": {
+        "cue-parser": "0.0.2"
+    }
 }
 ```
 
@@ -28,3 +28,9 @@ console.log(cuesheet.performer);
 console.log(cuesheet.files);
 console.log(cuesheet.files[0].tracks);
 ```
+
+References
+==========
+
+- [Cue sheet format kodi.wiki](http://kodi.wiki/view/Cue_sheets)
+- [Cue sheet format from wiki.hydrogenaud.io](http://wiki.hydrogenaud.io/index.php?title=Cue_sheet)
