@@ -74,9 +74,9 @@ describe('cue-parser', function() {
         });
 
         it('should parse all REMs', function() {
-            expect(sheet.rem).to.be.an('array');
-            expect(sheet.rem[0]).to.be('Comment in toplevel');
-            expect(sheet.rem[1]).to.be('Comment in track');
+            expect(sheet.rems).to.be.an('array');
+            expect(sheet.rems[0]).to.be('Comment in toplevel');
+            expect(sheet.rems[1]).to.be('Comment in track');
         });
 
         describe('track detail infos', function() {
