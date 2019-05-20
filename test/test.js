@@ -25,6 +25,16 @@ describe('cue-parser', function() {
         });
     });
 
+    describe('handles files with unknown entries', function() {
+        it('should not not fail when reading files with unknown entries', function() {
+            try {
+                sheet = parser.parse(__dirname + '/sample-with-unknown.cue');
+            } catch (e) {
+                expect('This should not happen').to.be(true);
+            }
+        })
+    });
+
     describe('it should parse linux files with \n', function() {
         beforeEach(function() {
             sheet = parser.parse(__dirname + '/sample.cue');
@@ -55,7 +65,7 @@ describe('cue-parser', function() {
 
         it('should parse Disk TITLE', function() {
             expect(sheet.title).to.be('Sample title');
-        })
+        });
 
         it('should parse all tracks of the file', function() {
             var tracks = sheet.files[0].tracks;
