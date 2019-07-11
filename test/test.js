@@ -5,9 +5,10 @@ describe('cue-parser', function() {
     var sheet;
 
     describe('it should parse windows files with \r\n', function() {
-        sheet = parser.parse(__dirname + '/sample-win.cue');
 
         it('should skip newlines', function() {
+            sheet = parser.parse(__dirname + '/sample-win.cue');
+
             expect(sheet.catalog).to.be('3898347789120');
 
             expect(sheet.files).to.be.an('array');
@@ -55,7 +56,7 @@ describe('cue-parser', function() {
 
         it('should parse Disk TITLE', function() {
             expect(sheet.title).to.be('Sample title');
-        })
+        });
 
         it('should parse all tracks of the file', function() {
             var tracks = sheet.files[0].tracks;
