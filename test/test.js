@@ -1,5 +1,6 @@
-var expect = require('expect.js')
-, parser = require('../lib/cue');
+var path = require('path');
+var expect = require('expect.js');
+var parser = require('../lib/cue');
 
 describe('cue-parser', function() {
     var sheet;
@@ -149,4 +150,35 @@ describe('cue-parser', function() {
             });
         });
     });
+
+    describe('it should parse EAC generated CUE files', function() {
+
+        it('parse: Frank Boeijen - Palermo - CD1.eac.cue', () => {
+            sheet = parser.parse(path.join(__dirname, 'Frank Boeijen - Palermo - CD1.eac.cue'));
+            expect(sheet.performer).to.be('Frank Boeijen');
+            expect(sheet.title).to.be('Palermo');
+            expect(sheet.files.length).to.be(10);
+        });
+
+        it('parse: Frank Boeijen Groep - Welkom In Utopia', () => {
+            sheet = parser.parse(path.join(__dirname, 'Frank Boeijen Groep - Welkom In Utopia.eac.cue'));
+            expect(sheet.performer).to.be('Frank Boeijen Groep');
+            expect(sheet.title).to.be('Welkom In Utopia');
+            expect(sheet.files.length).to.be(11);
+        });
+    });
+
+    describe('it should parse XLD generated CUE files', function() {
+
+        it('parse: Putumayo Presents - Yoga Lounge', () => {
+            sheet = parser.parse(path.join(__dirname, 'Putumayo Presents - Yoga Lounge.xld.cue'));
+            expect(sheet.files.length).to.be(12);
+
+            const file_track_1 = sheet.files[0];
+            expect(file_track_1.tracks.length).to.be(1);
+            expect(file_track_1.tracks[0].title).to.be('Dreamcatcher');
+            expect(file_track_1.tracks[0].performer).to.be('Bahramji & Maneesh De Moor');
+        });
+    });
+
 });
