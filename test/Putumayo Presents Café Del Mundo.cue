@@ -1,0 +1,125 @@
+TITLE "Putumayo Presents: Café Del Mundo"
+PERFORMER "Various Artists"
+REM GENRE "World Music"
+REM DATE "2014"
+REM DISCID 8C098C0C
+REM REPLAYGAIN_ALBUM_GAIN -4.11 dB
+REM REPLAYGAIN_ALBUM_PEAK 0.930603
+REM COMPILATION TRUE
+FILE "01 Metro – Boulot – Dodo.flac" WAVE
+  TRACK 01 AUDIO
+    TITLE "Metro – Boulot – Dodo"
+    PERFORMER "Les Frères Guissé (Sénégal)"
+    SONGWRITER "Guissé, Cheikh T.; Guissé, Oumar; Guissé, Ousmane; Guissé, Aliou"
+    ISRC US6QR1400035
+    REM REPLAYGAIN_TRACK_GAIN -4.73 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.871185
+    INDEX 01 00:00:00
+  TRACK 02 AUDIO
+    TITLE "Ojos Negros"
+    PERFORMER "Kelvis Ochoa and Descemer Bueno (Cuba)"
+    SONGWRITER "Ochoa, Kelvis"
+    ISRC US6QR1400039
+    REM REPLAYGAIN_TRACK_GAIN -4.27 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.879761
+    INDEX 00 04:14:48
+FILE "02 Ojos Negros.flac" WAVE
+    INDEX 01 00:00:00
+FILE "03 Nuovo.flac" WAVE
+  TRACK 03 AUDIO
+    TITLE "Nuovo"
+    PERFORMER "Gianmaria Testa (Italy)"
+    SONGWRITER "TESTA Gianmaria"
+    ISRC ITG951100001
+    REM REPLAYGAIN_TRACK_GAIN -2.65 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.486206
+    INDEX 01 00:00:00
+  TRACK 04 AUDIO
+    TITLE "Lon-Dubh (Blackbird)"
+    PERFORMER "Julie Fowlis (Scotland)"
+    SONGWRITER "Lennon, John & McCartney, Paul"
+    ISRC US6QR1400040
+    REM REPLAYGAIN_TRACK_GAIN -4.74 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.701874
+    INDEX 00 03:15:66
+FILE "04 Lon-Dubh (Blackbird).flac" WAVE
+    INDEX 01 00:00:00
+  TRACK 05 AUDIO
+    TITLE "Lluvia Sol"
+    PERFORMER "Les Babacools (Germany)"
+    SONGWRITER "Les Babacools"
+    ISRC US6QR1400041
+    REM REPLAYGAIN_TRACK_GAIN -2.98 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.901489
+    INDEX 00 02:39:48
+FILE "05 Lluvia Sol.flac" WAVE
+    INDEX 01 00:00:00
+  TRACK 06 AUDIO
+    TITLE "Gran Intento"
+    PERFORMER "Mónica Giraldo (Colombia)"
+    SONGWRITER "Giraldo, Mónica"
+    ISRC COGY11300077
+    REM REPLAYGAIN_TRACK_GAIN -4.65 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.837738
+    INDEX 00 04:13:71
+FILE "06 Gran Intento.flac" WAVE
+    INDEX 01 00:00:00
+  TRACK 07 AUDIO
+    TITLE "Hèmlè"
+    PERFORMER "Blick Bassy (Cameroon/France)"
+    SONGWRITER "Bassy, Blick"
+    ISRC US6QR1400042
+    REM REPLAYGAIN_TRACK_GAIN -4.72 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.930603
+    INDEX 00 03:23:34
+FILE "07 Hèmlè.flac" WAVE
+    INDEX 01 00:00:00
+  TRACK 08 AUDIO
+    TITLE "Ny Alantsika"
+    PERFORMER "Razia Said (Republic of Madagascar)"
+    SONGWRITER "Said, Razia"
+    ISRC US6QR1400043
+    REM REPLAYGAIN_TRACK_GAIN -3.77 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.707428
+    INDEX 00 02:50:47
+FILE "08 Ny Alantsika.flac" WAVE
+    INDEX 01 00:00:00
+  TRACK 09 AUDIO
+    TITLE "Sinar"
+    PERFORMER "Rita Lestariani (Indonesia)"
+    SONGWRITER "Lestariani, Rita; Narayan, Amith"
+    ISRC USCGH0515792
+    REM REPLAYGAIN_TRACK_GAIN -4.68 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.582489
+    INDEX 00 03:29:54
+FILE "09 Sinar.flac" WAVE
+    INDEX 01 00:00:00
+FILE "10 Amarte’Ei.flac" WAVE
+  TRACK 10 AUDIO
+    TITLE "Amarte’Ei"
+    PERFORMER "Fernando Lameirinhas (Portugal/The Netherlands)"
+    SONGWRITER "Lameirinhas, Fernando"
+    ISRC US6QR1400044
+    REM REPLAYGAIN_TRACK_GAIN -2.78 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.780151
+    INDEX 01 00:00:00
+  TRACK 11 AUDIO
+    TITLE "Beschäftigt Mit Dem Blues"
+    PERFORMER "Katharine Mehrling (Germany)"
+    SONGWRITER "Mehrling, Katharine"
+    ISRC DEA651100008
+    REM REPLAYGAIN_TRACK_GAIN -2.85 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.589355
+    INDEX 00 02:32:21
+FILE "11 Beschäftigt Mit Dem Blues.flac" WAVE
+    INDEX 01 00:00:00
+  TRACK 12 AUDIO
+    TITLE "Les Lendemains Mélodieux"
+    PERFORMER "Pascal Lejeune (Canada)"
+    SONGWRITER "Lejeuné, Pascal"
+    ISRC CAB2H0900031
+    REM REPLAYGAIN_TRACK_GAIN -3.28 dB
+    REM REPLAYGAIN_TRACK_PEAK 0.700043
+    INDEX 00 03:34:09
+FILE "12 Les Lendemains Mélodieux.flac" WAVE
+    INDEX 01 00:00:00

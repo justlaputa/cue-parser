@@ -13,12 +13,15 @@
   },
   "dependencise": {},
   "devDependencies": {
-    "mocha": "~1.10.0",
-    "expect.js": "~0.2.0"
+    "expect.js": "~0.2.0",
+    "mocha": "~1.10.0"
   },
   "engines": {
     "node": ">=0.10",
     "npm": ">=1.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chardet": "^0.8.0"
+  }
 }

@@ -181,4 +181,33 @@ describe('cue-parser', function() {
         });
     });
 
+    describe('Support text encoding', function() {
+
+        it('should be able to decode "UTF-8"', function() {
+            sheet = parser.parse(path.join(__dirname, 'Putumayo Presents Café Del Mundo.cue'));
+
+            expect(sheet.encoding).to.be('UTF-8');
+
+            const file_track_7= sheet.files[6];
+            expect(file_track_7.tracks.length).to.be(1);
+            expect(file_track_7.tracks[0].number).to.be(7);
+            expect(file_track_7.name).to.be('07 Hèmlè.flac')
+        });
+
+        it('should be able to decode "ISO-8859-1"', function() {
+            sheet = parser.parse(path.join(__dirname, 'Paco de Lucía - Fuente y Caudal.eac.cue'));
+
+            expect(sheet.encoding).to.be('ISO-8859-1');
+
+            expect(sheet.files.length).to.be(8);
+
+            const file_track_4 = sheet.files[3];
+            expect(file_track_4.tracks.length).to.be(1);
+            expect(file_track_4.tracks[0].number).to.be(4);
+            expect(file_track_4.tracks[0].title).to.be('Solera (Bulería por Soleá)');
+            expect(file_track_4.tracks[0].performer).to.be('Paco de Lucía');
+        });
+
+    });
+
 });
