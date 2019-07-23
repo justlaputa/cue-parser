@@ -5,7 +5,7 @@
   "author": "Xiao Han <justlaputa@gmail.com>",
   "description": "A simple js library to parse cue sheet",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/test.js"
+    "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
