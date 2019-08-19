@@ -4,6 +4,7 @@ cue-parser is an cue-sheet parser library written for nodejs.
 Most of the code is inspired by [cue-go](https://github.com/vchimishuk/cue-go)
 
 [![Build Status](https://travis-ci.org/justlaputa/cue-parser.png)](https://travis-ci.org/justlaputa/cue-parser)
+[![npm downloads](http://img.shields.io/npm/dm/cue-parser.svg)](https://npmcharts.com/compare/cue-parser,cuefileparser,cue-parser-plus?start=1500&interval=30)
 
 How to use
 =======
