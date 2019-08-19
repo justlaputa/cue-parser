@@ -7,6 +7,17 @@
     "email": "justlaputa@gmail.com",
     "homepage": "https://blog.laputa.io"
   },
+  "contributors": [
+    {
+      "name": "Borewit",
+      "homepage": "https://github.com/Borewit"
+    },
+    {
+      "name": "Xiao Han",
+      "email": "justlaputa@gmail.com",
+      "homepage": "https://blog.laputa.io"
+    }
+  ],
   "description": "A simple js library to parse cue sheet",
   "scripts": {
     "test": "mocha test/test.js"
