@@ -5,3 +5,8 @@ node_js:
   - "10"
   - "11"
   - "12"
+install:
+  - yarn install
+script:
+  - yarn run compile
+  - yarn run test

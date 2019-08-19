@@ -5,13 +5,16 @@
   "author": "Xiao Han <justlaputa@gmail.com>",
   "description": "A simple js library to parse cue sheet",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js",
+    "compile-src": "tsc -p src",
+    "compile": "npm run compile-src"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:justlaputa/cue-parser.git"
   },
   "devDependencies": {
+    "@types/node": "^12.7.2",
     "expect.js": "~0.2.0",
     "mocha": "^6.1.4"
   },
@@ -21,6 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "chardet": "^0.8.0"
+    "chardet": "^0.8.0",
+    "typescript": "^3.5.3"
   }
 }

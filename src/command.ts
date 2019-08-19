@@ -3,7 +3,7 @@
  * and all parameters
  */
 
-module.exports = function(line) {
+export function parseCommand(line) {
     var matcher = /^([A-Z]+)\s+(.*)$/,
     result,
     command,

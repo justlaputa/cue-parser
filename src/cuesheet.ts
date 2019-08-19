@@ -1,11 +1,4 @@
-
-module.exports.CueSheet = CueSheet;
-module.exports.File = File;
-module.exports.Track = Track;
-module.exports.Index = Index;
-module.exports.Time = Time;
-
-function CueSheet() {
+export function CueSheet() {
     this.catalog = null;
     this.cdTextFile = null;
     this.files = null;
@@ -15,13 +8,13 @@ function CueSheet() {
     this.rem = null;
 }
 
-function File() {
+export function File() {
     this.name = null;
     this.type = null;
     this.tracks = null;
 }
 
-function Track(number, type) {
+export function Track(number, type) {
     this.number = (number === undefined ? null : number);
     this.type = (type || null);
     this.title = null;
@@ -34,15 +27,15 @@ function Track(number, type) {
     this.indexes = null;
 }
 
-function Index(number, time) {
+export function Index(number, time) {
     this.number = (number === undefined ? null : number);
     this.time = (time || null);
 }
 
-function Time(min, sec, frame) {
-    this.min = min || 0;
-    this.sec = sec || 0;
-    this.frame = frame || 0;
+export function Time(min: number = 0, sec = 0, frame = 0) {
+    this.min = min;
+    this.sec = sec;
+    this.frame = frame;
 }
 
 CueSheet.prototype.getCurrentFile = function() {
