@@ -34,7 +34,7 @@ export function parseCommand(line) {
         command: command,
         params: params
     };
-};
+}
 
 function parseParams(lineString) {
     var params = [],
