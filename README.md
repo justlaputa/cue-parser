@@ -7,22 +7,24 @@ Most of the code is inspired by [cue-go](https://github.com/vchimishuk/cue-go)
 
 How to use
 =======
-Add dependency in your `package.json` file:
+Add cue-parser as a dependency to your project using npm:
 
-```json
-{
-    "dependencies": {
-        "cue-parser": "0.0.2"
-    }
-}
+```shell
+npm install cue-parser
 ```
 
-use it in you node source code
+or yarn:
+
+```shell
+yarn add cue-parser
+```
+
+Use it in your node source code
 
 ```javascript
-var parser = require('cue-parser');
+const parser = require('cue-parser');
 
-var cuesheet = parser.parse('filename.cue');
+const cuesheet = parser.parse('filename.cue');
 
 console.log(cuesheet.performer);
 console.log(cuesheet.files);
