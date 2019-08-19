@@ -43,8 +43,8 @@
   },
   "devDependencies": {
     "@types/node": "^12.7.2",
-    "expect.js": "~0.2.0",
-    "mocha": "^6.1.4",
+    "expect.js": "^0.3.1",
+    "mocha": "^6.2.0",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   },
