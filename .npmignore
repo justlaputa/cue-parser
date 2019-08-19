@@ -9,3 +9,4 @@ appveyor.yml
 tsconfig.json
 tslint.json
 *.iml
+lib/**/*.js.map
