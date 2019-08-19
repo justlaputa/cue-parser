@@ -19,6 +19,14 @@
     }
   ],
   "description": "A simple js library to parse cue sheet",
+  "keywords": [
+    "cue",
+    "sheet",
+    "cue-sheet",
+    "parser",
+    "eac",
+    "xld"
+  ],
   "scripts": {
     "test": "mocha test/test.js"
   },
