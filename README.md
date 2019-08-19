@@ -4,6 +4,11 @@ cue-parser is an cue-sheet parser library written for nodejs.
 Most of the code is inspired by [cue-go](https://github.com/vchimishuk/cue-go)
 
 [![Build Status](https://travis-ci.org/justlaputa/cue-parser.png)](https://travis-ci.org/justlaputa/cue-parser)
+[![NPM version](https://img.shields.io/npm/v/cue-parser.svg)](https://npmjs.org/package/cue-parser)
+[![npm downloads](http://img.shields.io/npm/dm/cue-parser.svg)](https://npmcharts.com/compare/cue-parser,cuefileparser,cue-parser-plus?start=1500&interval=30)
+[![Dependencies](https://david-dm.org/justlaputa/cue-parser.svg)](https://david-dm.org/justlaputa/cue-parser)\
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/justlaputa/cue-parser.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/justlaputa/cue-parser/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/justlaputa/cue-parser.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/justlaputa/cue-parser/context:javascript)
 
 How to use
 =======
