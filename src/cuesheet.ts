@@ -1,19 +1,22 @@
-export function File() {
-  this.name = null;
-  this.type = null;
-  this.tracks = null;
+import { ITime } from './cue';
+
+export class File {
+
+  name:string = null;
+  type: string = null;
+  tracks: Track[] = null;
 }
 
 export class Track {
 
-  title = null;
-  flags = null;
-  isrc = null;
-  performer = null;
-  songWriter = null;
-  pregap = null;
-  postgap = null;
-  indexes = null;
+  title: string = null;
+  flags: string = null;
+  isrc: string = null;
+  performer: string = null;
+  songWriter: string = null;
+  pregap: ITime = null;
+  postgap: ITime = null;
+  indexes: Index[] = null;
 
   constructor(public number: number, public type = null) {
   }
@@ -21,7 +24,7 @@ export class Track {
 
 export class Index {
 
-  constructor(public number: number = null, public time = null) {
+  constructor(public number: number = null, public time: Time = null) {
   }
 }
 
@@ -33,16 +36,16 @@ export class Time {
 
 export class CueSheet {
 
-  catalog = null;
-  cdTextFile = null;
-  files = null;
-  performer = null;
-  songWriter = null;
-  title = null;
-  rem = null;
+  catalog: string = null;
+  cdTextFile: string = null;
+  files: File[] = null;
+  performer: string = null;
+  songWriter: string = null;
+  title: string = null;
+  rem: string[] = null;
   encoding: string;
 
-  getCurrentFile() {
+  getCurrentFile(): File {
     if (this.files && this.files.length > 0) {
       return this.files[this.files.length - 1];
     } else {
@@ -50,7 +53,7 @@ export class CueSheet {
     }
   }
 
-  getCurrentTrack() {
+  getCurrentTrack(): Track {
     const file = this.getCurrentFile();
 
     if (file && file.tracks && file.tracks.length > 0) {
@@ -60,7 +63,7 @@ export class CueSheet {
     }
   }
 
-  newFile() {
+  newFile(): File {
     if (!this.files) {
       this.files = [];
     }
@@ -71,11 +74,11 @@ export class CueSheet {
     return file;
   }
 
-  newTrack(number, type) {
+  newTrack(number: number, type: string): CueSheet {
     const file = this.getCurrentFile();
 
     if (!file) {
-      throw new Error('No file for track: ' + number + type);
+      throw new Error(`No file for track: ${number} ${type}`);
     }
 
     if (!file.tracks) {

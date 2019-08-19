@@ -70,7 +70,7 @@ export function parse(filename) {
   return cuesheet;
 }
 
-export function parseCatalog(params, cuesheet) {
+export function parseCatalog(params: string[], cuesheet) {
   cuesheet.catalog = params[0];
 }
 
@@ -78,7 +78,7 @@ export function parseCdTextFile(params, cuesheet) {
   cuesheet.cdTextFile = params[0];
 }
 
-export function parseFile(params, cuesheet) {
+export function parseFile(params: string[], cuesheet) {
   var file = cuesheet.getCurrentFile();
 
   if (!file || file.name) {
@@ -89,7 +89,7 @@ export function parseFile(params, cuesheet) {
   file.type = params[1];
 }
 
-export function parseFlags(params, cuesheet) {
+export function parseFlags(params: string[], cuesheet) {
   var track = cuesheet.getCurrentTrack();
 
   if (!track) {
@@ -99,10 +99,10 @@ export function parseFlags(params, cuesheet) {
   track.flags = params.slice(0);
 }
 
-export function parseIndex(params, cuesheet) {
-  var number = parseInt(params[0], 10)
-    , time = parseTime(params[1])
-    , track = cuesheet.getCurrentTrack();
+export function parseIndex(params: string[], cueSheet: CueSheet): Index {
+  const number = parseInt(params[0], 10);
+  const time = parseTime(params[1]);
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
     throw new Error('No track found for index ' + params);
@@ -117,7 +117,7 @@ export function parseIndex(params, cuesheet) {
   }
 
   if (number === 1 && time.min === 0 && time.min === 0 && time.sec === 0 && time.frame === 0) {
-    cuesheet.newFile();
+    cueSheet.newFile();
     return;
   }
 
@@ -135,8 +135,8 @@ export function parseIndex(params, cuesheet) {
   track.indexes.push(new Index(number, time));
 }
 
-function parseIsrc(params, cuesheet) {
-  const track = cuesheet.getCurrentTrack();
+function parseIsrc(params, cueSheet: CueSheet) {
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
     throw new Error('No track for adding isrc: ' + params);
@@ -145,18 +145,18 @@ function parseIsrc(params, cuesheet) {
   track.isrc = params[0];
 }
 
-function parsePerformer(params, cuesheet) {
-  const track = cuesheet.getCurrentTrack();
+function parsePerformer(params, cueSheet: CueSheet) {
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
-    cuesheet.performer = params[0];
+    cueSheet.performer = params[0];
   } else {
     track.performer = params[0];
   }
 }
 
-function parsePostgap(params, cuesheet) {
-  var track = cuesheet.getCurrentTrack();
+function parsePostgap(params, cueSheet: CueSheet) {
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
     throw new Error('POSTGAP can only used in TRACK');
@@ -169,8 +169,8 @@ function parsePostgap(params, cuesheet) {
   track.postgap = parseTime(params[0]);
 }
 
-function parsePregap(params, cuesheet) {
-  var track = cuesheet.getCurrentTrack();
+function parsePregap(params, cueSheet: CueSheet) {
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
     throw new Error('PREGAP can only used in TRACK');
@@ -187,40 +187,46 @@ function parsePregap(params, cuesheet) {
   track.pregap = parseTime(params[0]);
 }
 
-function parseRem(params, cuesheet) {
-  if (!cuesheet.rem) {
-    cuesheet.rem = [];
+function parseRem(params, cueSheet: CueSheet) {
+  if (!cueSheet.rem) {
+    cueSheet.rem = [];
   }
 
-  cuesheet.rem.push(params.join(' '));
+  cueSheet.rem.push(params.join(' '));
 }
 
-function parseSongWriter(params, cuesheet) {
-  var track = cuesheet.getCurrentTrack();
+function parseSongWriter(params, cueSheet: CueSheet) {
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
-    cuesheet.songWriter = params[0];
+    cueSheet.songWriter = params[0];
   } else {
     track.songWriter = params[0];
   }
 }
 
-function parseTitle(params, cuesheet) {
-  const track = cuesheet.getCurrentTrack();
+function parseTitle(params, cueSheet: CueSheet) {
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
-    cuesheet.title = params[0];
+    cueSheet.title = params[0];
   } else {
     track.title = params[0];
   }
 }
 
-function parseTrack(params, cuesheet) {
+function parseTrack(params, cuesheet: CueSheet) {
   const number = parseInt(params[0], 10);
   cuesheet.newTrack(number, params[1]);
 }
 
-function parseTime(timeSting) {
+export interface ITime {
+  min: number;
+  sec: number;
+  frame: number;
+}
+
+function parseTime(timeSting): ITime {
   const timePattern = /^(\d{2,}):(\d{2}):(\d{2})$/,
     parts = timeSting.match(timePattern),
     time = new Time();

@@ -1,47 +1,46 @@
+export interface ICommand {
+    command: string;
+    params: string[];
+}
+
 /**
  * parse one line of cue sheet, and return COMMAND
  * and all parameters
  */
-
-export function parseCommand(line) {
-    var matcher = /^([A-Z]+)\s+(.*)$/,
-    result,
-    command,
-    params;
+export function parseCommand(line: string): ICommand {
+    const matcher = /^([A-Z]+)\s+(.*)$/;
+    let result;
 
     line = line.trim();
 
     result = line.match(matcher);
 
-    if (result) {
-
-        command = result[1];
-        params = parseParams(result[2]);
-
-    } else {
+    if (!result) {
         throw new Error('Not a command: ' + line);
     }
+
+    const command = result[1];
 
     if (!command) {
         throw new Error('Can not parse command from ' + line);
     }
 
+    const params = parseParams(result[2]);
     if (!params) {
         throw new Error('Can not parse parameters from ' + line);
     }
 
     return {
-        command: command,
-        params: params
+        command,
+        params
     };
 }
 
-function parseParams(lineString) {
-    var params = [],
-    quoteIndex;
+function parseParams(lineString: string): string[] {
+    let params: string[] = [];
 
     if (lineString[0] === '"') {
-        quoteIndex = lineString.indexOf('"', 1);
+        const quoteIndex = lineString.indexOf('"', 1);
         params.push(lineString.substring(1, quoteIndex));
         lineString = lineString.substring(quoteIndex + 1).trim();
     }
