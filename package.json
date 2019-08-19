@@ -2,14 +2,37 @@
   "name": "cue-parser",
   "preferGlobal": false,
   "version": "0.0.4",
-  "author": "Xiao Han <justlaputa@gmail.com>",
+  "author": {
+    "name": "Xiao Han",
+    "email": "justlaputa@gmail.com",
+    "homepage": "https://blog.laputa.io"
+  },
+  "contributors": [
+    {
+      "name": "Borewit",
+      "homepage": "https://github.com/Borewit"
+    },
+    {
+      "name": "Xiao Han",
+      "email": "justlaputa@gmail.com",
+      "homepage": "https://blog.laputa.io"
+    }
+  ],
   "description": "A simple js library to parse cue sheet",
+  "keywords": [
+    "cue",
+    "sheet",
+    "cue-sheet",
+    "parser",
+    "eac",
+    "xld"
+  ],
   "scripts": {
     "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:justlaputa/cue-parser.git"
+    "url": "git+https://github.com/justlaputa/cue-parser.git"
   },
   "devDependencies": {
     "expect.js": "~0.2.0",
