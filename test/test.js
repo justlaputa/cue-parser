@@ -1,13 +1,15 @@
-var expect = require('expect.js')
-, parser = require('../lib/cue');
+var path = require('path');
+var expect = require('expect.js');
+var parser = require('../lib/cue');
 
 describe('cue-parser', function() {
     var sheet;
 
     describe('it should parse windows files with \r\n', function() {
-        sheet = parser.parse(__dirname + '/sample-win.cue');
 
         it('should skip newlines', function() {
+            sheet = parser.parse(__dirname + '/sample-win.cue');
+
             expect(sheet.catalog).to.be('3898347789120');
 
             expect(sheet.files).to.be.an('array');
@@ -55,7 +57,7 @@ describe('cue-parser', function() {
 
         it('should parse Disk TITLE', function() {
             expect(sheet.title).to.be('Sample title');
-        })
+        });
 
         it('should parse all tracks of the file', function() {
             var tracks = sheet.files[0].tracks;
@@ -148,4 +150,64 @@ describe('cue-parser', function() {
             });
         });
     });
+
+    describe('it should parse EAC generated CUE files', function() {
+
+        it('parse: Frank Boeijen - Palermo - CD1.eac.cue', function() {
+            sheet = parser.parse(path.join(__dirname, 'Frank Boeijen - Palermo - CD1.eac.cue'));
+            expect(sheet.performer).to.be('Frank Boeijen');
+            expect(sheet.title).to.be('Palermo');
+            expect(sheet.files.length).to.be(10);
+        });
+
+        it('parse: Frank Boeijen Groep - Welkom In Utopia', function() {
+            sheet = parser.parse(path.join(__dirname, 'Frank Boeijen Groep - Welkom In Utopia.eac.cue'));
+            expect(sheet.performer).to.be('Frank Boeijen Groep');
+            expect(sheet.title).to.be('Welkom In Utopia');
+            expect(sheet.files.length).to.be(11);
+        });
+    });
+
+    describe('it should parse XLD generated CUE files', function() {
+
+        it('parse: Putumayo Presents - Yoga Lounge', function() {
+            sheet = parser.parse(path.join(__dirname, 'Putumayo Presents - Yoga Lounge.xld.cue'));
+            expect(sheet.files.length).to.be(12);
+
+            const file_track_1 = sheet.files[0];
+            expect(file_track_1.tracks.length).to.be(1);
+            expect(file_track_1.tracks[0].title).to.be('Dreamcatcher');
+            expect(file_track_1.tracks[0].performer).to.be('Bahramji & Maneesh De Moor');
+        });
+    });
+
+    describe('Support text encoding', function() {
+
+        it('should be able to decode "UTF-8"', function() {
+            sheet = parser.parse(path.join(__dirname, 'Putumayo Presents Café Del Mundo.cue'));
+
+            expect(sheet.encoding).to.be('UTF-8');
+
+            const file_track_7= sheet.files[6];
+            expect(file_track_7.tracks.length).to.be(1);
+            expect(file_track_7.tracks[0].number).to.be(7);
+            expect(file_track_7.name).to.be('07 Hèmlè.flac')
+        });
+
+        it('should be able to decode "ISO-8859-1"', function() {
+            sheet = parser.parse(path.join(__dirname, 'Paco de Lucía - Fuente y Caudal.eac.cue'));
+
+            expect(sheet.encoding).to.be('ISO-8859-1');
+
+            expect(sheet.files.length).to.be(8);
+
+            const file_track_4 = sheet.files[3];
+            expect(file_track_4.tracks.length).to.be(1);
+            expect(file_track_4.tracks[0].number).to.be(4);
+            expect(file_track_4.tracks[0].title).to.be('Solera (Bulería por Soleá)');
+            expect(file_track_4.tracks[0].performer).to.be('Paco de Lucía');
+        });
+
+    });
+
 });
