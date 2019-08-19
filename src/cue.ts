@@ -3,37 +3,30 @@
  */
 import * as fs from 'fs';
 import { parseCommand } from './command';
-import { CueSheet } from './cuesheet';
-import { File } from './cuesheet';
-import { Index, Time } from './cuesheet';
+import { CueSheet, Index, Time } from './cuesheet';
 import * as chardet from 'chardet';
 
 const commandMap = {
-  'CATALOG': parseCatalog,
-  'CDTEXTFILE': parseCdTextFile,
-  'FILE': parseFile,
-  'FLAGS': parseFlags,
-  'INDEX': parseIndex,
-  'ISRC': parseIsrc,
-  'PERFORMER': parsePerformer,
-  'POSTGAP': parsePostgap,
-  'PREGAP': parsePregap,
-  'REM': parseRem,
-  'SONGWRITER': parseSongWriter,
-  'TITLE': parseTitle,
-  'TRACK': parseTrack
+  CATALOG: parseCatalog,
+  CDTEXTFILE: parseCdTextFile,
+  FILE: parseFile,
+  FLAGS: parseFlags,
+  INDEX: parseIndex,
+  ISRC: parseIsrc,
+  PERFORMER: parsePerformer,
+  POSTGAP: parsePostgap,
+  PREGAP: parsePregap,
+  REM: parseRem,
+  SONGWRITER: parseSongWriter,
+  TITLE: parseTitle,
+  TRACK: parseTrack
 };
-
 
 /**
  * parse function
  */
-
 export function parse(filename) {
-  var lineParser;
-  var lines;
-
-  const cuesheet = new CueSheet()
+  const cuesheet = new CueSheet();
 
   if (!filename) {
     console.log('no file name specified for parse');
@@ -53,12 +46,12 @@ export function parse(filename) {
       break;
   }
 
-  lines = ( fs.readFileSync(filename, {encoding: encoding, flag: 'r'}) as any)
+  const lines = (fs.readFileSync(filename, {encoding, flag: 'r'}) as any)
     .replace(/\r\n/, '\n').split('\n');
 
-  lines.forEach(function(line) {
+  lines.forEach(line => {
     if (!line.match(/^\s*$/)) {
-      lineParser = parseCommand(line);
+      const lineParser = parseCommand(line);
       commandMap[lineParser.command](lineParser.params, cuesheet);
     }
   });
@@ -79,7 +72,7 @@ export function parseCdTextFile(params, cuesheet) {
 }
 
 export function parseFile(params: string[], cuesheet) {
-  var file = cuesheet.getCurrentFile();
+  let file = cuesheet.getCurrentFile();
 
   if (!file || file.name) {
     file = cuesheet.newFile();
@@ -90,7 +83,7 @@ export function parseFile(params: string[], cuesheet) {
 }
 
 export function parseFlags(params: string[], cuesheet) {
-  var track = cuesheet.getCurrentTrack();
+  const track = cuesheet.getCurrentTrack();
 
   if (!track) {
     throw new Error('No track for adding flag: ' + params);
@@ -100,7 +93,7 @@ export function parseFlags(params: string[], cuesheet) {
 }
 
 export function parseIndex(params: string[], cueSheet: CueSheet): Index {
-  const number = parseInt(params[0], 10);
+  const _number = parseInt(params[0], 10);
   const time = parseTime(params[1]);
   const track = cueSheet.getCurrentTrack();
 
@@ -112,27 +105,27 @@ export function parseIndex(params: string[], cueSheet: CueSheet): Index {
     throw new Error('POSTGAP should be after all indexes');
   }
 
-  if (number < 0 || number > 99) {
-    throw new Error(`Index number must between 0 and 99: ${number}`);
+  if (_number < 0 || _number > 99) {
+    throw new Error(`Index number must between 0 and 99: ${_number}`);
   }
 
-  if (number === 1 && time.min === 0 && time.min === 0 && time.sec === 0 && time.frame === 0) {
+  if (_number === 1 && time.min === 0 && time.min === 0 && time.sec === 0 && time.frame === 0) {
     cueSheet.newFile();
     return;
   }
 
   if (!track.indexes) {
-    if (number > 2) {
-      throw new Error(`Invalid index number ${number}, First index number must be 0 or 1`);
+    if (_number > 2) {
+      throw new Error(`Invalid index number ${_number}, First index number must be 0 or 1`);
     }
     track.indexes = [];
   } else {
-    if (number !== track.indexes[track.indexes.length - 1].number + 1) {
-      throw new Error(`Invalid index number: ${number}, it should follow the last sequence`);
+    if (_number !== track.indexes[track.indexes.length - 1].number + 1) {
+      throw new Error(`Invalid index number: ${_number}, it should follow the last sequence`);
     }
   }
 
-  track.indexes.push(new Index(number, time));
+  track.indexes.push(new Index(_number, time));
 }
 
 function parseIsrc(params, cueSheet: CueSheet) {
@@ -216,8 +209,8 @@ function parseTitle(params, cueSheet: CueSheet) {
 }
 
 function parseTrack(params, cuesheet: CueSheet) {
-  const number = parseInt(params[0], 10);
-  cuesheet.newTrack(number, params[1]);
+  const _number = parseInt(params[0], 10);
+  cuesheet.newTrack(_number, params[1]);
 }
 
 export interface ITime {
@@ -227,24 +220,24 @@ export interface ITime {
 }
 
 function parseTime(timeSting): ITime {
-  const timePattern = /^(\d{2,}):(\d{2}):(\d{2})$/,
-    parts = timeSting.match(timePattern),
-    time = new Time();
+  const timePattern = /^(\d{2,}):(\d{2}):(\d{2})$/;
+  const  parts = timeSting.match(timePattern);
 
   if (!parts) {
-    throw new Error('Invalid time format:' + timeSting);
+    throw new Error(`Invalid time format: ${timeSting}`);
   }
 
+  const time = new Time();
   time.min = parseInt(parts[1], 10);
   time.sec = parseInt(parts[2], 10);
   time.frame = parseInt(parts[3], 10);
 
   if (time.sec > 59) {
-    throw new Error('Time second should be less than 60: ' + timeSting);
+    throw new Error(`Time second should be less than 60: ${timeSting}`);
   }
 
   if (time.frame > 74) {
-    throw new Error('Time frame should be less than 75: ' + timeSting);
+    throw new Error(`Time frame should be less than 75: ${timeSting}`);
   }
 
   return time;

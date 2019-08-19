@@ -2,29 +2,34 @@ import { ITime } from './cue';
 
 export class File {
 
-  name:string = null;
-  type: string = null;
-  tracks: Track[] = null;
+  public name: string = null;
+  public type: string = null;
+  public tracks: Track[] = null;
 }
 
 export class Track {
 
-  title: string = null;
-  flags: string = null;
-  isrc: string = null;
-  performer: string = null;
-  songWriter: string = null;
-  pregap: ITime = null;
-  postgap: ITime = null;
-  indexes: Index[] = null;
+  public title: string = null;
+  public flags: string = null;
+  public isrc: string = null;
+  public performer: string = null;
+  public songWriter: string = null;
+  public pregap: ITime = null;
+  public postgap: ITime = null;
+  public indexes: Index[] = null;
+  public number: number;
 
-  constructor(public number: number, public type = null) {
+  constructor(_number: number, public type: string = null) {
+    this.number = _number;
   }
 }
 
 export class Index {
 
-  constructor(public number: number = null, public time: Time = null) {
+  public number: number;
+
+  constructor(_number: number = null, public time: Time = null) {
+    this.number = _number;
   }
 }
 
@@ -36,16 +41,16 @@ export class Time {
 
 export class CueSheet {
 
-  catalog: string = null;
-  cdTextFile: string = null;
-  files: File[] = null;
-  performer: string = null;
-  songWriter: string = null;
-  title: string = null;
-  rem: string[] = null;
-  encoding: string;
+  public catalog: string = null;
+  public cdTextFile: string = null;
+  public files: File[] = null;
+  public performer: string = null;
+  public songWriter: string = null;
+  public title: string = null;
+  public rem: string[] = null;
+  public encoding: string;
 
-  getCurrentFile(): File {
+  public getCurrentFile(): File {
     if (this.files && this.files.length > 0) {
       return this.files[this.files.length - 1];
     } else {
@@ -53,7 +58,7 @@ export class CueSheet {
     }
   }
 
-  getCurrentTrack(): Track {
+  public getCurrentTrack(): Track {
     const file = this.getCurrentFile();
 
     if (file && file.tracks && file.tracks.length > 0) {
@@ -63,7 +68,7 @@ export class CueSheet {
     }
   }
 
-  newFile(): File {
+  public newFile(): File {
     if (!this.files) {
       this.files = [];
     }
@@ -74,18 +79,18 @@ export class CueSheet {
     return file;
   }
 
-  newTrack(number: number, type: string): CueSheet {
+  public newTrack(_number: number, type: string): CueSheet {
     const file = this.getCurrentFile();
 
     if (!file) {
-      throw new Error(`No file for track: ${number} ${type}`);
+      throw new Error(`No file for track: ${_number} ${type}`);
     }
 
     if (!file.tracks) {
       file.tracks = [];
     }
 
-    file.tracks.push(new Track(number, type));
+    file.tracks.push(new Track(_number, type));
 
     return this;
   }
