@@ -28,22 +28,29 @@
     "xld"
   ],
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js",
+    "compile-src": "tsc -p src",
+    "compile": "npm run compile-src",
+    "lint": "tslint 'src/**/*.ts'",
+    "fix-lint": "tslint --fix 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/justlaputa/cue-parser.git"
   },
+  "dependencies": {
+    "chardet": "^0.8.0",
+    "typescript": "^3.5.3"
+  },
   "devDependencies": {
+    "@types/node": "^12.7.2",
     "expect.js": "~0.2.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "tslint": "^5.18.0"
   },
   "engines": {
     "node": ">=0.10",
     "npm": ">=1.2"
   },
-  "license": "MIT",
-  "dependencies": {
-    "chardet": "^0.8.0"
-  }
+  "license": "MIT"
 }
