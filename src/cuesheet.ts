@@ -1,16 +1,9 @@
-import { ITime } from './cue';
+import { ITime, ICueSheet, IFile, ITrack } from "./types";
 
-export class File {
-
-  public name: string = null;
-  public type: string = null;
-  public tracks: Track[] = null;
-}
-
-export class Track {
+export class Track implements ITrack {
 
   public title: string = null;
-  public flags: string = null;
+  public flags: string[] = null;
   public isrc: string = null;
   public performer: string = null;
   public songWriter: string = null;
@@ -22,6 +15,13 @@ export class Track {
   constructor(_number: number, public type: string = null) {
     this.number = _number;
   }
+}
+
+export class File implements IFile {
+
+  public name: string = null;
+  public type: string = null;
+  public tracks: Track[] = null;
 }
 
 export class Index {
@@ -39,7 +39,7 @@ export class Time {
   }
 }
 
-export class CueSheet {
+export class CueSheet implements ICueSheet {
 
   public catalog: string = null;
   public cdTextFile: string = null;

@@ -2,11 +2,14 @@
  * Main library
  */
 import * as fs from 'fs';
+import * as chardet from 'chardet';
 import { parseCommand } from './command';
 import { CueSheet, Index, Time } from './cuesheet';
-import * as chardet from 'chardet';
+import { ICueSheet, ITime } from "./types";
 
-const commandMap = {
+type parserFunction = (params: string[], cuesheet: CueSheet) => void;
+
+const commandMap: { [command: string]: parserFunction; } = {
   CATALOG: parseCatalog,
   CDTEXTFILE: parseCdTextFile,
   FILE: parseFile,
@@ -23,9 +26,11 @@ const commandMap = {
 };
 
 /**
- * parse function
+ * Parse function
+ * @param filename Filename path to cue-sheet to be parsed
+ * @return CUE-sheet information object
  */
-export function parse(filename) {
+export function parse(filename: string): ICueSheet {
   const cuesheet = new CueSheet();
 
   if (!filename) {
@@ -63,15 +68,15 @@ export function parse(filename) {
   return cuesheet;
 }
 
-export function parseCatalog(params: string[], cuesheet) {
+function parseCatalog(params: string[], cuesheet: CueSheet) {
   cuesheet.catalog = params[0];
 }
 
-export function parseCdTextFile(params, cuesheet) {
+function parseCdTextFile(params, cuesheet) {
   cuesheet.cdTextFile = params[0];
 }
 
-export function parseFile(params: string[], cuesheet) {
+function parseFile(params: string[], cuesheet: CueSheet) {
   let file = cuesheet.getCurrentFile();
 
   if (!file || file.name) {
@@ -82,8 +87,8 @@ export function parseFile(params: string[], cuesheet) {
   file.type = params[1];
 }
 
-export function parseFlags(params: string[], cuesheet) {
-  const track = cuesheet.getCurrentTrack();
+function parseFlags(params: string[], cueSheet: CueSheet) {
+  const track = cueSheet.getCurrentTrack();
 
   if (!track) {
     throw new Error('No track for adding flag: ' + params);
@@ -92,7 +97,7 @@ export function parseFlags(params: string[], cuesheet) {
   track.flags = params.slice(0);
 }
 
-export function parseIndex(params: string[], cueSheet: CueSheet): Index {
+function parseIndex(params: string[], cueSheet: CueSheet): Index {
   const _number = parseInt(params[0], 10);
   const time = parseTime(params[1]);
   const track = cueSheet.getCurrentTrack();
@@ -213,15 +218,9 @@ function parseTrack(params, cuesheet: CueSheet) {
   cuesheet.newTrack(_number, params[1]);
 }
 
-export interface ITime {
-  min: number;
-  sec: number;
-  frame: number;
-}
-
 function parseTime(timeSting): ITime {
   const timePattern = /^(\d{2,}):(\d{2}):(\d{2})$/;
-  const  parts = timeSting.match(timePattern);
+  const parts = timeSting.match(timePattern);
 
   if (!parts) {
     throw new Error(`Invalid time format: ${timeSting}`);
