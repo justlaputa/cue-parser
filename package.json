@@ -49,6 +49,8 @@
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   },
+  "main": "lib/cue",
+  "typings": "lib/cue",
   "engines": {
     "node": ">=0.10",
     "npm": ">=1.2"
