@@ -31,6 +31,7 @@
     "test": "mocha test/test.js",
     "compile-src": "tsc -p src",
     "compile": "npm run compile-src",
+    "build": "npm run compile",
     "lint": "tslint 'src/**/*.ts'",
     "fix-lint": "tslint --fix 'src/**/*.ts'"
   },
