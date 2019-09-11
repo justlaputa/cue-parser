@@ -1,11 +1,11 @@
-var path = require('path');
-var expect = require('expect.js');
-var parser = require('../lib/cue');
+const path = require('path');
+const expect = require('expect.js');
+const parser = require('../lib/cue');
 
 describe('cue-parser', function() {
-    var sheet;
+    let sheet;
 
-    describe('it should parse windows files with \r\n', function() {
+    describe('it should parse windows files with', () => {
 
         it('should skip newlines', function() {
             sheet = parser.parse(__dirname + '/sample-win.cue');
@@ -27,39 +27,39 @@ describe('cue-parser', function() {
         });
     });
 
-    describe('it should parse linux files with \n', function() {
-        beforeEach(function() {
+    describe('it should parse linux files with', () => {
+        beforeEach( () => {
             sheet = parser.parse(__dirname + '/sample.cue');
         });
 
-        it('should parse CATALOG', function() {
+        it('should parse CATALOG', () => {
             expect(sheet.catalog).to.be('3898347789120');
         });
 
-        it('should parse CDTEXTFILE', function() {
+        it('should parse CDTEXTFILE', () => {
             expect(sheet.cdTextFile).to.be('C:\\LONG FILENAME.CDT');
         });
 
-        it('should parse FILE', function() {
+        it('should parse FILE', () => {
             expect(sheet.files).to.be.an('array');
             expect(sheet.files).to.have.length(1);
             expect(sheet.files[0].name).to.be('sample file.ape');
             expect(sheet.files[0].type).to.be('WAVE');
         });
 
-        it('should parse Disk PERFORMER', function() {
+        it('should parse Disk PERFORMER', () => {
             expect(sheet.performer).to.be('Sample performer');
         });
 
-        it('should parse Disk SONGWRITER', function() {
+        it('should parse Disk SONGWRITER', () => {
             expect(sheet.songWriter).to.be('Sample songwriter');
         });
 
-        it('should parse Disk TITLE', function() {
+        it('should parse Disk TITLE', () => {
             expect(sheet.title).to.be('Sample title');
         });
 
-        it('should parse all tracks of the file', function() {
+        it('should parse all tracks of the file', () => {
             var tracks = sheet.files[0].tracks;
 
             expect(tracks).to.be.an('array');
@@ -75,13 +75,13 @@ describe('cue-parser', function() {
             expect(tracks[2].type).to.be('AUDIO');
         });
 
-        it('should parse all REMs', function() {
+        it('should parse all REMs', () => {
             expect(sheet.rem).to.be.an('array');
             expect(sheet.rem[0]).to.be('Comment in toplevel');
             expect(sheet.rem[1]).to.be('Comment in track');
         });
 
-        describe('track detail infos', function() {
+        describe('track detail infos', () => {
             var track1, track2;
 
             beforeEach(function() {
