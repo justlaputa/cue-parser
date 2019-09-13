@@ -29,11 +29,11 @@
   ],
   "scripts": {
     "test": "mocha test/test.js",
-    "compile-src": "tsc -p src",
-    "compile": "npm run compile-src",
+    "compile-lib": "tsc -p lib",
+    "compile": "npm run compile-lib",
     "build": "npm run compile",
-    "lint": "tslint 'src/**/*.ts'",
-    "fix-lint": "tslint --fix 'src/**/*.ts'"
+    "lint": "tslint 'lib/**/*.ts'",
+    "fix-lint": "tslint --fix 'lib/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,10 @@
   },
   "main": "lib/cue",
   "typings": "lib/cue",
+  "files": [
+    "lib/**/*.js",
+    "lib/**/*.d.ts"
+  ],
   "engines": {
     "node": ">=0.10",
     "npm": ">=1.2"
