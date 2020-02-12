@@ -45,10 +45,8 @@ export function parse(filename: string): ICueSheet {
   cuesheet.encoding = chardet.detect(fs.readFileSync(filename));
   let encoding = cuesheet.encoding;
 
-  switch (cuesheet.encoding) {
-    case 'ISO-8859-1':
-      encoding = 'binary';
-      break;
+  if (cuesheet.encoding.startsWith('ISO-8859-')) {
+    encoding = 'binary';
   }
 
   const lines = (fs.readFileSync(filename, {encoding, flag: 'r'}) as any)
