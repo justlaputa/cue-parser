@@ -50,6 +50,8 @@ export class CueSheet implements ICueSheet {
   public rem: string[] = null;
   public encoding: string;
 
+  private track: Track;
+
   public getCurrentFile(): File {
     if (this.files && this.files.length > 0) {
       return this.files[this.files.length - 1];
@@ -59,13 +61,7 @@ export class CueSheet implements ICueSheet {
   }
 
   public getCurrentTrack(): Track {
-    const file = this.getCurrentFile();
-
-    if (file && file.tracks && file.tracks.length > 0) {
-      return file.tracks[file.tracks.length - 1];
-    } else {
-      return null;
-    }
+    return this.track;
   }
 
   public newFile(): File {
@@ -80,18 +76,8 @@ export class CueSheet implements ICueSheet {
   }
 
   public newTrack(_number: number, type: string): CueSheet {
-    const file = this.getCurrentFile();
 
-    if (!file) {
-      throw new Error(`No file for track: ${_number} ${type}`);
-    }
-
-    if (!file.tracks) {
-      file.tracks = [];
-    }
-
-    file.tracks.push(new Track(_number, type));
-
+    this.track = new Track(_number, type);
     return this;
   }
 }
