@@ -95,7 +95,7 @@ function parseFlags(params: string[], cueSheet: CueSheet) {
   track.flags = params.slice(0);
 }
 
-function parseIndex(params: string[], cueSheet: CueSheet): Index {
+function parseIndex(params: string[], cueSheet: CueSheet) {
   const _number = parseInt(params[0], 10);
   const time = parseTime(params[1]);
   const track = cueSheet.getCurrentTrack();
@@ -112,9 +112,13 @@ function parseIndex(params: string[], cueSheet: CueSheet): Index {
     throw new Error(`Index number must between 0 and 99: ${_number}`);
   }
 
-  if (_number === 1 && time.min === 0 && time.min === 0 && time.sec === 0 && time.frame === 0) {
-    cueSheet.newFile();
-    return;
+  if (_number === 1) {
+    // Assign track to current file
+    const file = cueSheet.getCurrentFile();
+    if (!file.tracks) {
+      file.tracks = [];
+    }
+    file.tracks.push(track);
   }
 
   if (!track.indexes) {
