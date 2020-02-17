@@ -4,8 +4,7 @@
   "version": "0.2.1",
   "author": {
     "name": "Xiao Han",
-    "email": "justlaputa@gmail.com",
-    "homepage": "https://blog.laputa.io"
+    "homepage": "https://github.com/justlaputa"
   },
   "contributors": [
     {
@@ -14,8 +13,7 @@
     },
     {
       "name": "Xiao Han",
-      "email": "justlaputa@gmail.com",
-      "homepage": "https://blog.laputa.io"
+      "homepage": "https://github.com/justlaputa"
     }
   ],
   "description": "A simple js library to parse cue sheet",
