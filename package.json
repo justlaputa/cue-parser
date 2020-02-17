@@ -56,8 +56,8 @@
     "lib/**/*.d.ts"
   ],
   "engines": {
-    "node": ">=0.10",
-    "npm": ">=1.2"
+    "node": ">=8",
+    "npm": ">=5"
   },
   "license": "MIT"
 }
