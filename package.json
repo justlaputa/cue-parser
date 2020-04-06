@@ -38,7 +38,7 @@
     "url": "git+https://github.com/justlaputa/cue-parser.git"
   },
   "dependencies": {
-    "chardet": "^0.8.0"
+    "chardet": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
