@@ -1,7 +1,7 @@
 {
   "name": "cue-parser",
   "preferGlobal": false,
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": {
     "name": "Xiao Han",
     "homepage": "https://github.com/justlaputa"
@@ -54,8 +54,8 @@
     "lib/**/*.d.ts"
   ],
   "engines": {
-    "node": ">=8",
-    "npm": ">=5"
+    "node": ">=10",
+    "npm": ">=6"
   },
   "license": "MIT"
 }
