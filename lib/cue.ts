@@ -43,10 +43,12 @@ export function parse(filename: string): ICueSheet {
   }
 
   cuesheet.encoding = chardet.detect(fs.readFileSync(filename));
-  let encoding = cuesheet.encoding;
+  let encoding: BufferEncoding = 'utf8';
 
   if (cuesheet.encoding.startsWith('ISO-8859-')) {
     encoding = 'binary';
+  } else if (cuesheet.encoding.toUpperCase() === 'UTF-16 LE') {
+    encoding = 'utf16le';
   }
 
   const lines = (fs.readFileSync(filename, {encoding, flag: 'r'}) as any)
