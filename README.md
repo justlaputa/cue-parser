@@ -1,6 +1,7 @@
 About
 =======
-cue-parser is an cue-sheet parser library written for nodejs.
+cue-parser is a cue-sheet parser library written for nodejs.
+
 Most of the code is inspired by [cue-go](https://github.com/vchimishuk/cue-go)
 
 [![Build Status](https://travis-ci.org/justlaputa/cue-parser.png)](https://travis-ci.org/justlaputa/cue-parser)
